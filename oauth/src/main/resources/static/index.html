@@ -12,18 +12,30 @@
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$.get("/user", function(data) {
+		$("#user").html(data.name);
+		$(".unauthenticated").hide()
+		$(".authenticated").show()
+	});
+</script>
 </head>
 <body>
 	<div class="container">
 		<h1>Oauth example</h1>
-		<h2>Sucesso no login!</h2>
+		<div class="container unauthenticated">
+			Com GitHub: <a href="/oauth2/authorization/github">clique aqui</a>
+		</div>
+		<div class="container authenticated" style="display: none">
+			Logado como: <span id="user"></span>
+		</div>
+
 		<br>
 		<h2>Consulta de endereço pelo CEP:</h2>
 		<form action="/consultaCep">
-			<label for="cep">CEP:</label> 
-			<input type="text" id="cep" name="cep"
+			<label for="cep">CEP:</label> <input type="text" id="cep" name="cep"
 				placeholder="CEP somente números" required></input>
-				<button type="submit">Consultar</button>
+			<button type="submit">Consultar</button>
 		</form>
 	</div>
 </body>
