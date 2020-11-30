@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	// @formatter:off
         http
             .authorizeRequests(a -> a
-                .antMatchers("/", "/error", "/webjars/**").permitAll()
+                .antMatchers("/", "/error", "/webjars/**","/consultaCep").permitAll()
                 .anyRequest().authenticated()
             )
             .exceptionHandling(e -> e
